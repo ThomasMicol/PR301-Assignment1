@@ -1,8 +1,8 @@
-from InterpreterController import *
-from CommandLineView import *
-from Interpreter import *
+from source.View.GraphView import *
+from source.InterpreterController import *
+from source.Model.Interpreter import *
 
 
 if __name__ == '__main__':
-    InterpreterController(CommandLineView(), Interpreter()).go()
+    InterpreterController(GraphView(), Interpreter(DataValidator()))
 
