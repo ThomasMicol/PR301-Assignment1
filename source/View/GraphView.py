@@ -1,4 +1,4 @@
-from source.View.IGraphView import *
+from View.IGraphView import IGraphView
 
 class GraphView(IGraphView):
 

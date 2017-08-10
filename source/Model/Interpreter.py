@@ -1,4 +1,4 @@
-from source.Model.DataValidation.DataValidator import DataValidator
+from Model.DataValidation.DataValidator import DataValidator
 
 class Interpreter:
     def __init__(self, in_validator):

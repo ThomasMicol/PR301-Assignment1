@@ -1,4 +1,4 @@
-from source.Model.DataValidation.IDataValidator import IDataValidator
+from Model.DataValidation.IDataValidator import IDataValidator
 
 class DataValidator(IDataValidator):
     def validate_data(self, dirty_data_arr):
