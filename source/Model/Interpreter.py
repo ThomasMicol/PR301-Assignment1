@@ -17,13 +17,12 @@ class Interpreter:
 
     def load_file(self, option_arr):
         print("hello i am in the load")
-        option = option_arr[0]
-        if option == 'l':
-            self.file_handler(file_path)
+
 
     def add_manual_data(self, new_person_data):
-        # TODO Implement this method
-        pass
+        data = self.my_validator.validate_data(new_person_data)
+        print(data)
+        return True
 
     def set_data_arr(self, dirty_data_arr):
         # TODO Implement this method

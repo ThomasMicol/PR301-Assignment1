@@ -20,7 +20,8 @@ class InterpreterController(Cmd):
             if options_arr[0] == key:
                 if not self.try_launch(key,value, options_arr):
                     self.my_view.show("command FAILED")
-
+                else:
+                    self.my_view.show("SUCCESS")
 
     def do_save(self, *args):
         # TODO implement this method
@@ -52,6 +53,7 @@ class InterpreterController(Cmd):
     def try_launch(self, key, value, options_arr):
         if (key == '-m'):
             value()
+            return True
         else:
             if len(options_arr) == 2:
                 value(options_arr[1])

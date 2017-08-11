@@ -9,7 +9,7 @@ class DataValidator(IDataValidator):
         # TODO This is where the input from the user is washed and made sure to work with the program.
 
         for person in dirty_data_arr:
-            #print(person)
+            print(person)
 
             if len(person) == 7:
                 cleaned_data = []
@@ -48,7 +48,7 @@ class DataValidator(IDataValidator):
             if len(cleaned_data) == 7:
                 return cleaned_data
 
-
+    @staticmethod
     def validate_empid(empid):
         """
         Checks EMPID = [A-Z][0-9]{3}) e.g. B003
@@ -61,7 +61,7 @@ class DataValidator(IDataValidator):
         else:
             return False
 
-
+    @staticmethod
     def validate_gender(gender):
         """
         Checks gender = M or F e.g. M or F
@@ -74,7 +74,7 @@ class DataValidator(IDataValidator):
         else:
             return False
 
-
+    @staticmethod
     def validate_age(age):
         """
         Checks age = [0-9]{2} e.g. 0 to 99
@@ -87,7 +87,7 @@ class DataValidator(IDataValidator):
         else:
             return False
 
-
+    @staticmethod
     def validate_sales(sales):
         """
         Checks Sales = [0-9]{3} e.g. 330
@@ -100,7 +100,7 @@ class DataValidator(IDataValidator):
         else:
             return False
 
-
+    @staticmethod
     def validate_bmi(bmi):
         """
         Checks BMI = normal|overweight|obesity|underweight case insensitive
@@ -113,7 +113,7 @@ class DataValidator(IDataValidator):
         else:
             return False
 
-
+    @staticmethod
     def validate_salary(salary):
         """
         Checks Salary = [0-9]{2,3} e.g. 33 or 330
@@ -126,7 +126,7 @@ class DataValidator(IDataValidator):
         else:
             return False
 
-
+    @staticmethod
     def validate_birthday(birthday):
         """
         Checks birthday = [0-9]{1,2}-[0-9]{1,2}-[0-9]{4} e.g. 2-5-1967
@@ -140,4 +140,4 @@ class DataValidator(IDataValidator):
             return False
 
 
-doctest.testmod(verbose=True)
+# doctest.testmod(verbose=True)
