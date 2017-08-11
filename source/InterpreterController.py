@@ -18,7 +18,9 @@ class InterpreterController(Cmd):
         }
         for key, value in option_dict.items():
             if options_arr[0] == key:
-                option_dict[key](options_arr[1])
+                if not self.try_launch(key,value, options_arr):
+                    self.my_view.show("command FAILED")
+
 
     def do_save(self, *args):
         # TODO implement this method
@@ -41,9 +43,19 @@ class InterpreterController(Cmd):
         else:
             return arg_arr
 
-    def manual_add(self, file_path):
-        print(file_path)
-        print('HELLO')
+    def manual_add(self):
+        self.my_interpreter.add_manual_data(self.my_view.manual_person_flow())
 
     def load_file(self):
         pass
+
+    def try_launch(self, key, value, options_arr):
+        if (key == '-m'):
+            value()
+        else:
+            if len(options_arr) == 2:
+                value(options_arr[1])
+                return True
+            else:
+                self.my_view.show("Incorrect amount of arguments")
+                return False

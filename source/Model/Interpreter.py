@@ -16,11 +16,12 @@ class Interpreter:
         pass
 
     def load_file(self, option_arr):
+        print("hello i am in the load")
         option = option_arr[0]
         if option == 'l':
             self.file_handler(file_path)
 
-    def add_manual_data(self, new_person):
+    def add_manual_data(self, new_person_data):
         # TODO Implement this method
         pass
 
