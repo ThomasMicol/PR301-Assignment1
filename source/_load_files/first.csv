@@ -1,0 +1,6 @@
+EMPID,Gender,Age,Sales,BMI,Income
+E001,M,34,123,Normal,350
+E002,F,40,114,Overweight,450
+E003,F,37,135,Obesity,169
+E004,M,30,139,Underweight,189
+E005,M,34,139,Normal,300

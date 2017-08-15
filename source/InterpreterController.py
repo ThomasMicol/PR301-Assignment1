@@ -9,31 +9,34 @@ class InterpreterController(Cmd):
         self.my_interpreter = in_interpreter
 
     def do_add(self, *args):
-        arg_found = False
         options_arr = self.parse_args(args)
         option_dict = {
             '-l': self.my_interpreter.load_file,
             '-m': self.manual_add,
             '-d': self.my_interpreter.load_database
         }
-        for key, value in option_dict.items():
-            if options_arr[0] == key:
-                arg_found = True
-                if not self.try_launch(key, value, options_arr):
-                    self.my_view.show("command FAILED")
-                else:
-                    self.my_view.show("SUCCESS")
-        if not arg_found:
-            self.my_view.show("That option doesnt work with the given command")
+        self.find_in_dict(options_arr, option_dict)
+
 
 
     def do_save(self, *args):
-        # TODO implement this method
-        pass
+        options_arr = self.parse_args(args)
+        option_dict = {
+            '-s': self.my_interpreter.save_file,
+            '-d': self.my_interpreter.save_database,
+            '-f': self.my_interpreter.serialize_data_arr
+        }
+        self.find_in_dict(options_arr,option_dict)
 
     def do_show(self, *args):
-        # TODO implement this method
-        pass
+        options_arr = self.parse_args(args)
+        option_dict = {
+            '-a': self.my_view.sales_by_gender_graph(self.my_interpreter.get_data()),
+            '-b': self.my_view.employees_by_gender_graph(self.my_interpreter.get_data()),
+            '-c': self.my_view.ages_verse_salary_graph(self.my_interpreter.get_data()),
+            '-d': self.my_view.bmi_pie_graph(self.my_interpreter.get_data())
+        }
+        self.find_in_dict(options_arr, option_dict)
 
     def do_quit(self, *args):
         quit()
@@ -53,6 +56,18 @@ class InterpreterController(Cmd):
 
     def load_file(self):
         pass
+
+    def find_in_dict(self, options_arr, options_dict):
+        arg_found = False
+        for key, value in options_dict.items():
+            if options_arr[0] == key:
+                arg_found = True
+                if not self.try_launch(key, value, options_arr):
+                    self.my_view.show("command FAILED")
+                else:
+                    self.my_view.show("SUCCESS")
+        if not arg_found:
+            self.my_view.show("That option doesnt work with the given command")
 
     def try_launch(self, key, value, options_arr):
         if (key == '-m'):
