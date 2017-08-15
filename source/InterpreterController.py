@@ -4,24 +4,28 @@ from cmd import Cmd
 class InterpreterController(Cmd):
     def __init__(self, in_view, in_interpreter):
         Cmd.__init__(self)
-        self.prompt= '> '
+        self.prompt = '> '
         self.my_view = in_view
         self.my_interpreter = in_interpreter
 
-
     def do_add(self, *args):
+        arg_found = False
         options_arr = self.parse_args(args)
         option_dict = {
-            '-l' : self.my_interpreter.load_file,
-            '-m' : self.manual_add,
-            '-d' : self.my_interpreter.load_file
+            '-l': self.my_interpreter.load_file,
+            '-m': self.manual_add,
+            '-d': self.my_interpreter.load_database
         }
         for key, value in option_dict.items():
             if options_arr[0] == key:
-                if not self.try_launch(key,value, options_arr):
+                arg_found = True
+                if not self.try_launch(key, value, options_arr):
                     self.my_view.show("command FAILED")
                 else:
                     self.my_view.show("SUCCESS")
+        if not arg_found:
+            self.my_view.show("That option doesnt work with the given command")
+
 
     def do_save(self, *args):
         # TODO implement this method

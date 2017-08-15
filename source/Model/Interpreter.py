@@ -1,13 +1,11 @@
-from Model.DataValidation.DataValidator import DataValidator
-
 class Interpreter:
     def __init__(self, in_validator, in_file_handler):
-        data_arr = None
+        self.data_arr = []
         self.my_validator = in_validator
         self.file_handler = in_file_handler
 
 
-    def serialize_data_arr():
+    def serialize_data_arr(self):
         # TODO Implement this method
         pass
 
@@ -15,15 +13,16 @@ class Interpreter:
         # TODO Implement this method
         pass
 
-    def load_file(self, option_arr):
-        print("hello i am in the load")
+    def load_file(self, file_path):
+        self.set_data_arr(self.file_handler.load_file(file_path))
 
+    def load_database(self, database_name='mydb'):
+        self.set_data_arr(self.database_handler.get_data_arr(database_name))
 
     def add_manual_data(self, new_person_data):
         data = self.my_validator.validate_data(new_person_data)
-        print(data)
+        self.data_arr.append(data);
         return True
 
     def set_data_arr(self, dirty_data_arr):
-        # TODO Implement this method
-        pass
+        self.data_arr = self.my_validator.validate_data(dirty_data_arr);
