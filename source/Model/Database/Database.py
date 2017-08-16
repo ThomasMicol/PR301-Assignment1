@@ -5,6 +5,7 @@ class Database(IDatabase):
 
     def __init(self):
         self.conn = None
+        self.deleteme= None
         self.cursor = None
 
     def create_connection(self, database_name):
