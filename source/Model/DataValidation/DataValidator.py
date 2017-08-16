@@ -95,7 +95,7 @@ class DataValidator(IDataValidator):
         >>> validate_age(str(64))
         True
         """
-        if re.compile("([0-9]{2})").match(age):
+        if re.compile("([0-9]{1,2})").match(age):
             return True
         else:
             return False
