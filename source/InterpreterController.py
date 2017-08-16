@@ -26,7 +26,7 @@ class InterpreterController(Cmd):
             '-d': self.my_interpreter.save_database,
             '-f': self.my_interpreter.serialize_data_arr
         }
-        self.find_in_dict(options_arr,option_dict)
+        self.find_in_dict(options_arr, option_dict)
 
     def do_show(self, *args):
         options_arr = self.parse_args(args)

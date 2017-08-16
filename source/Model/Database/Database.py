@@ -15,14 +15,11 @@ class Database(IDatabase):
         self.cursor = self.conn.cursor()
         self.make_tables()
 
-
-
     def make_tables(self):
         make_table = """CREATE TABLE IF NOT EXISTS employees ( EMPID INTERGER PRIMARY KEY, Gender CHAR, sales INTERGER
         , bmi VARCHAR(15), salary INTERGER, birthday DATE);"""
         self.cursor.execute(make_table);
         self.conn.commit()
-
 
     def insert_person(self, data_arr):
         for person in data_arr:
@@ -33,13 +30,27 @@ class Database(IDatabase):
             self.cursor.execute(insert_command)
             self.conn.commit()
 
-    def get_person_information(self, database_name='mydb'):
-        self.create_connection(database_name);
+    def select_person_data(self):
+        data_arr = []
+        self.cursor.execute("Select * from employees")
+        result = cursor.fetchall()
+        for r in result:
+            data_arr.append(r)
+        return data_arr
 
+    def get_person_information(self, database_name='mydb'):
+        self.create_connection(database_name)
+        return self.select_person_data()
 
     def save_data(self, data_arr, database_name='mydb'):
         self.create_connection(database_name)
-        self.insert_person(data_arr)
+        try:
+            self.insert_person(data_arr)
+            return "Success"
+        except RuntimeError:
+            print("Error inserting the data into the database")
+            return "Error"
+
 
 
 
