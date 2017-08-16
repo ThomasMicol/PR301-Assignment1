@@ -1,6 +1,9 @@
+from Model.PersonFactory import *
+
 class Interpreter:
     def __init__(self, in_validator, in_file_handler, in_database_handler):
         self.data_arr = []
+        self.person_arr = None
         self.my_validator = in_validator
         self.file_handler = in_file_handler
         self.database_handler = in_database_handler
@@ -30,3 +33,6 @@ class Interpreter:
 
     def set_data_arr(self, dirty_data_arr):
         self.data_arr = self.my_validator.validate_data(dirty_data_arr);
+        self.person_arr = PersonFactory.convert_data_to_persons(self.data_arr)
+
+

@@ -1,4 +1,4 @@
-from source.Model.Database.IDatabase import IDatabase
+from Model.Database.IDatabase import IDatabase
 import sqlite3
 
 class Database(IDatabase):
