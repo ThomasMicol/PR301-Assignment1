@@ -2,51 +2,64 @@ from Model.DataValidation.IDataValidator import IDataValidator
 import re
 import doctest
 
-#person = ["A001", "M", 20, 333, "Normal", 666, "20-2-1997"]
+# person = ["A001", "M", 20, 333, "Normal", 666, "20-2-1997"]
+
 
 class DataValidator(IDataValidator):
     def validate_data(self, dirty_data_arr):
         # TODO This is where the input from the user is washed and made sure to work with the program.
+        # where valid person data goes
+        clean_people = []
 
-        for person in dirty_data_arr:
-            print(person)
+        for dirty_person in dirty_data_arr:
+            # print("dirty person", dirty_person)
 
-            if len(person) == 7:
-                cleaned_data = []
-                print("data is correct length")
+            if len(dirty_person) == 7:
+                cleaned_person = []
+                # print("data is correct length")
 
-                if self.validate_empid(str(person[0])):
-                    print("Valid empid: " + str(person[0]))
-                    cleaned_data.append(str(person[0]))
+                if self.validate_empid(str(dirty_person[0])):
+                    print("Valid empid: " + str(dirty_person[0]))
+                    cleaned_person.append(str(dirty_person[0]))
 
-                if self.validate_gender(str(person[1])):
-                    print("Valid gender: " + str(person[1]))
-                    cleaned_data.append(str(person[1]))
+                if self.validate_gender(str(dirty_person[1])):
+                    print("Valid gender: " + str(dirty_person[1]))
+                    cleaned_person.append(str(dirty_person[1]))
 
-                if self.validate_age(str(person[2])):
-                    print("Valid age: " + str(person[2]))
-                    cleaned_data.append(str(person[2]))
+                if self.validate_age(str(dirty_person[2])):
+                    print("Valid age: " + str(dirty_person[2]))
+                    cleaned_person.append(str(dirty_person[2]))
 
-                if self.validate_sales(str(person[3])):
-                    print("Valid Sales: " + str(person[3]))
-                    cleaned_data.append(str(person[3]))
+                if self.validate_sales(str(dirty_person[3])):
+                    print("Valid Sales: " + str(dirty_person[3]))
+                    cleaned_person.append(str(dirty_person[3]))
 
-                if self.validate_bmi(str(person[4])):
-                    print("Valid BMI: " + str(person[4]))
-                    cleaned_data.append(str(person[4]))
+                if self.validate_bmi(str(dirty_person[4])):
+                    print("Valid BMI: " + str(dirty_person[4]))
+                    cleaned_person.append(str(dirty_person[4]))
 
-                if self.validate_salary(str(person[5])):
-                    print("Valid salary: " + str(person[5]))
-                    cleaned_data.append(str(person[5]))
+                if self.validate_salary(str(dirty_person[5])):
+                    print("Valid salary: " + str(dirty_person[5]))
+                    cleaned_person.append(str(dirty_person[5]))
 
-                if self.validate_birthday(str(person[6])):
-                    print("Valid birthday: " + str(person[6]))
-                    cleaned_data.append(str(person[6]))
+                if self.validate_birthday(str(dirty_person[6])):
+                    print("Valid birthday: " + str(dirty_person[6]))
+                    cleaned_person.append(str(dirty_person[6]))
             else:
-                return "Not enough feilds" + str(len(person))
+                return "Not enough feilds" + str(len(dirty_person))
 
-            if len(cleaned_data) == 7:
-                return cleaned_data
+            # print("Cleaned data before filter: ", cleaned_person)
+
+            filter(None, cleaned_person)
+
+            print("Cleaned person after filter: ", cleaned_person)
+
+            if len(cleaned_person) == 7:
+                clean_people.append(cleaned_person)
+
+        print("Cleaned people after filter: ", clean_people)
+
+        return clean_people
 
     @staticmethod
     def validate_empid(empid):
