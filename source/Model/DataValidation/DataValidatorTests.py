@@ -3,7 +3,7 @@ from DataValidator import *
 
 
 class DataValidatorTests(unittest.TestCase):
-
+    """DataValidatorTests structure first three testcases done by Steven Snelling"""
     @classmethod
     def setUpClass(cls):
         cls.dataValidator = DataValidator()
@@ -33,6 +33,7 @@ class DataValidatorTests(unittest.TestCase):
         # bad day test for person 3 bad data is rejected
         age = self.data[2][2]
         self.assertFalse(self.dataValidator.validate_age(age), "That is not a valid age input")
+
 
     # vaishali
 
