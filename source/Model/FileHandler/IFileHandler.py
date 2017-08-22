@@ -1,13 +1,13 @@
-"""Written By Thomas
-
-This defines the abstract methods for the FileHandler.
-
-If any of these methods are called without their
-implementation being defined in a child class, the
-NotImplemented error will be thrown.
-This results in the system closing however.
-
-"""
+# Written By Thomas
+#
+# This defines the abstract methods for the FileHandler.
+#
+# If any of these methods are called without their
+# implementation being defined in a child class, the
+# NotImplemented error will be thrown.
+# This results in the system closing however.
+#
+#
 
 
 class IFileHandler(object):

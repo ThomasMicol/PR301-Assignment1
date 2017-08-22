@@ -34,9 +34,7 @@ class DataValidatorTests(unittest.TestCase):
         age = self.data[2][2]
         self.assertFalse(self.dataValidator.validate_age(age), "That is not a valid age input")
 
-
     # vaishali
-
     # Testing valid employeeID input
     def test_person_empid_01(self):
         empid = self.data[0][0]

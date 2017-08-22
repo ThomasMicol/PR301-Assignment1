@@ -1,9 +1,9 @@
-"""Written By Thomas
-
-This is the main file. The dependency injection is handled from here
-and the cmdloop is started.
-
- """
+# Written By Thomas
+#
+# This is the main file. The dependency injection is handled from here
+# and the cmdloop is started.
+#
+#
 
 
 from InterpreterController import InterpreterController
