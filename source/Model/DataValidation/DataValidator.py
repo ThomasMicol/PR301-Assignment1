@@ -1,13 +1,12 @@
-from IDataValidator import IDataValidator
+from Model.DataValidation.IDataValidator import IDataValidator
+#from IDataValidator import IDataValidator
 import re
 import doctest
 
-# person = ["A001", "M", 20, 333, "Normal", 666, "20-2-1997"]
-
 
 class DataValidator(IDataValidator):
+    """DataValidator written by Steven Snelling"""
     def validate_data(self, dirty_data_arr):
-        # TODO This is where the input from the user is washed and made sure to work with the program.
         # where valid person data goes
         clean_people = []
 

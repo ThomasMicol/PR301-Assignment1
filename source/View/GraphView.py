@@ -12,10 +12,26 @@ class GraphView(IGraphView):
             'layout': {
                 'title': 'Forcasted 2014 U.S. PV Installations by Market Segment'}
         }
-
         self.show_graph(graph_data)
 
-    def show(self, show_string):
+    def employees_by_gender_graph(self, data_arr):
+        # TODO
+        pass
+
+    def age_verse_salary_graph(self, data_arr):
+        # TODO
+        pass
+
+    def bmi_pie_graph(self, data_arr):
+        # TODO
+        pass
+
+    def simple_print(self, data_arr):
+        # TODO
+        pass
+
+    @staticmethod
+    def show(show_string):
         print(show_string)
 
     def read(self, prompt):
@@ -36,4 +52,4 @@ class GraphView(IGraphView):
 
     @staticmethod
     def show_graph(graph_data):
-        plotly.offline.plot(graph_data)
+        offline.plot(graph_data)
