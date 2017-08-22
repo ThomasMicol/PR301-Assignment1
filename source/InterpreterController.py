@@ -24,7 +24,6 @@ class InterpreterController(Cmd):
         self.my_view = in_view
         self.my_interpreter = in_interpreter
 
-
     @staticmethod
     def check_set_file_path(running_args):
         """Written By Thomas
@@ -33,10 +32,11 @@ class InterpreterController(Cmd):
         The functionality provided here is the user is able to supply a default
         path to where they would like to store their files when they are saved.
 
-        It is handled by taking the sys.argsv then checking if there was only one
-        string provided. then it checks if the path is accessible.
+        It is handled by taking the sys.argsv then checking if there
+        was only onestring provided. then it checks if the path is accessible.
 
-        If it is the default is set. otherwise it defaults to the main and continues working.
+        If it is the default is set. otherwise it defaults to the main and
+        continues working.
         """
 
         if len(running_args) > 2:
@@ -119,9 +119,9 @@ class InterpreterController(Cmd):
     def parse_args(arg_str):
         """Written by Thomas
 
-        This method takes a argument string which is a string of options given to the
-        interpreter after a command has been invoked. It then splits this string up
-        everytime it finds a blank space.
+        This method takes a argument string which is a string of options
+        given to the interpreter after a command has been invoked. It
+        then splits this string up everytime it finds a blank space.
 
         The resulting array is then returned to the calling function.
 
@@ -136,8 +136,9 @@ class InterpreterController(Cmd):
     def manual_add(self):
         """Written By Thomas
 
-        This simply invokes the manual data entry flow in the view then passes that
-        information into the add manual data in the model.
+        This simply invokes the manual data entry flow in the
+        view then passes that information into the add manual
+        data in the model.
 
         """
         self.my_interpreter.add_manual_data(self.my_view.manual_person_flow())
@@ -145,12 +146,13 @@ class InterpreterController(Cmd):
     def find_in_dict(self, options_arr, options_dict):
         """Written By Thomas
 
-        This function is given an array of options and an option dictionary from
-        the calling method. It then goes through the dictionary trying to match
-        a given option with an existing command.
+        This function is given an array of options and an option
+        dictionary from the calling method. It then goes through
+        the dictionary trying to match a given option with an
+        existing command.
 
-        When a matching is found the try_launch method is called which launches the
-        value at the corresponding matched key.
+        When a matching is found the try_launch method is called
+        which launches the value at the corresponding matched key.
 
         """
         arg_found = False
@@ -169,11 +171,11 @@ class InterpreterController(Cmd):
         """Written By Thomas
 
         Is given a matched option and key value pair.
-        The key is checked to make sure it isnt -m because this acts differntly.
-        if it is the value is ran on its own.
+        The key is checked to make sure it isnt -m because
+        this acts differntly. if it is the value is ran on its own.
 
-        if it isnt the options array needs to have exactly 2 items otherwise it will fail
-        if it has 2 item the value is ran.
+        if it isnt the options array needs to have exactly 2 items
+        otherwise it will fail if it has 2 item the value is ran.
         """
         if (key == '-m'):
             value()
@@ -184,4 +186,3 @@ class InterpreterController(Cmd):
                 return True
             else:
                 return False
-

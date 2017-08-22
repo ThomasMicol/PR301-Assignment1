@@ -19,7 +19,8 @@ class GraphView(IGraphView):
                       'values': [19, 26, 55],
                       'type': 'pie'}],
             'layout': {
-                'title': 'Forcasted 2014 U.S. PV Installations by Market Segment'}
+                'title': 'Forcasted 2014 U.S. PV Installations by Market'
+                         ' Segment'}
         }
         self.show_graph(graph_data)
 
@@ -33,12 +34,14 @@ class GraphView(IGraphView):
         This takes an array of pre cleaned person data arrays then formats then
         extracts the needed information into the age and salary data arrays.
 
-        Salary is also multiplied by 1000 to get the actual value of a persons salary
+        Salary is also multiplied by 1000 to get the actual value of a persons
+        salary
 
-        figure is used to generate a usable graph object. This is passed the graph
-        data and the graph format dictionaries.
+        figure is used to generate a usable graph object. This is passed the
+        graph data and the graph format dictionaries.
 
-        the usable graph object is then output by passing it to the show_graph method
+        the usable graph object is then output by passing it to the show_graph
+        method
 
         """
         age_data = []
@@ -72,8 +75,8 @@ class GraphView(IGraphView):
 
         This makes a pie graph of every employees BMI
         The counters are initialized at the start then the array is iterated
-        through, matching the BMI of each employee with the correct input then adding
-        one to the respective counter.
+        through, matching the BMI of each employee with the correct input
+        then adding one to the respective counter.
         """
         normal_count = 0
         obesity_count = 0
@@ -87,16 +90,17 @@ class GraphView(IGraphView):
             if person[4] == "Obesity":
                 obesity_count += 1
             if person[4] == "Underweight":
-                underweight_count +=1
+                underweight_count += 1
         graph_data = {
-            'data': [{'labels': ['Normal', 'Overweight', 'Obesity', 'Underweight'],
-                      'values': [normal_count, overweight_count, obesity_count, underweight_count],
+            'data': [{'labels': ['Normal', 'Overweight', 'Obesity',
+                                 'Underweight'],
+                      'values': [normal_count, overweight_count,
+                                 obesity_count, underweight_count],
                       'type': 'pie'}],
             'layout': {
                 'title': 'Staff by BMI'}
         }
         self.show_graph(graph_data)
-
 
     @staticmethod
     def show(show_string):

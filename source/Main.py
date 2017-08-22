@@ -16,6 +16,10 @@ import sys
 
 
 if __name__ == '__main__':
-    InterpreterController(GraphView(), Interpreter(DataValidator(), FileHandler(), Database(),
-                          InterpreterController.check_set_file_path(sys.argv))).cmdloop()
-
+    InterpreterController(GraphView(), Interpreter(
+                            DataValidator(),
+                            FileHandler(),
+                            Database(),
+                            InterpreterController.check_set_file_path(sys.argv)
+                            )
+                          ).cmdloop()

@@ -1,9 +1,24 @@
 from Model.FileHandler.IFileHandler import IFileHandler
 import csv
 
+
 class FileHandler(IFileHandler):
+    """Written By Thomas
+
+    This class handles any file system related functions.
+    It adheres to the abstract methods defined in IFileHandler
+
+    """
     @staticmethod
     def load_file(file_path='data.csv'):
+        """Written By Thomas
+
+        This takes a file path then loads that information into
+        an array. the array is then returned.
+
+        If the file location isnt found the user is told.
+
+        """
         data_arr = []
         try:
             with open(file_path, newline='') as file:
@@ -14,11 +29,18 @@ class FileHandler(IFileHandler):
             print("File ", file_path, " was not found")
         return data_arr
 
+    @staticmethod
+    def save_file(data_arr, file_path='data.csv'):
+        """Written By Thomas
 
-    def save_file(self, data_arr, file_path='data.csv'):
+        This method takes a clean data array and writes it to a
+        file location. This is done in a csv format.
+
+        """
         try:
             with open(file_path, 'w', newline='') as data_file:
-                write = csv.writer(data_file, quotechar='|', delimiter=",", quoting=csv.QUOTE_MINIMAL)
+                write = csv.writer(data_file, quotechar='|', delimiter=",",
+                                   quoting=csv.QUOTE_MINIMAL)
                 for person in data_arr:
                     write.writerow(person)
         except FileNotFoundError:

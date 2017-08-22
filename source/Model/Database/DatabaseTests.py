@@ -1,6 +1,7 @@
 import unittest
 from Model.Database.Database import *
 
+
 class DatabaseTests(unittest.TestCase):
     def setUp(self):
         self.database_handler = Database()
