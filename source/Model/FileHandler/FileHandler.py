@@ -17,11 +17,10 @@ class FileHandler(IFileHandler):
 
     def save_file(self, data_arr, file_path='data.csv'):
         try:
-            with open(file_path,'wb') as data_file:
-                write = csv.writer(data_file)
+            with open(file_path, 'w', newline='') as data_file:
+                write = csv.writer(data_file, quotechar='|', delimiter=",", quoting=csv.QUOTE_MINIMAL)
                 for person in data_arr:
-                    for data in person:
-                        write.writerow(data)
+                    write.writerow(person)
         except FileNotFoundError:
             print("File ", file_path, " was not found")
 

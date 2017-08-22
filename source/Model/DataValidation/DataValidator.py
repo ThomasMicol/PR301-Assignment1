@@ -1,4 +1,4 @@
-from IDataValidator import IDataValidator
+from Model.DataValidation.IDataValidator import IDataValidator
 import re
 import doctest
 

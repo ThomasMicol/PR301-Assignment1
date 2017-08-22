@@ -1,21 +1,30 @@
-from Model.PersonFactory import *
 
 class Interpreter:
-    def __init__(self, in_validator, in_file_handler, in_database_handler):
+    def __init__(self, in_validator, in_file_handler, in_database_handler, in_file_path):
         self.data_arr = []
-        self.person_arr = None
         self.my_validator = in_validator
         self.file_handler = in_file_handler
         self.database_handler = in_database_handler
+        self.default_file_path = in_file_path
 
 
     def serialize_data_arr(self):
         # TODO Implement this method
         pass
 
-    def save_file(self, args):
-        # TODO Implement this method
-        pass
+    def save_file(self, args=''):
+        if args == '':
+            try:
+                self.file_handler.save_file(self.data_arr, self.default_file_path)
+            except OSError as erro:
+                print(erro);
+                return False;
+        else:
+            try:
+                self.file_handler.save_file(self.data_arr, args)
+            except OSError as erro:
+                print(erro)
+                return False
 
     def save_database(self, database_name='mydb'):
         self.database_handler.save_data(self.data_arr, database_name)
@@ -33,6 +42,5 @@ class Interpreter:
 
     def set_data_arr(self, dirty_data_arr):
         self.data_arr = self.my_validator.validate_data(dirty_data_arr);
-        self.person_arr = PersonFactory.convert_data_to_persons(self.data_arr)
 
 

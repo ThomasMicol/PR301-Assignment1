@@ -1,12 +1,29 @@
 from cmd import Cmd
 
-
 class InterpreterController(Cmd):
     def __init__(self, in_view, in_interpreter):
         Cmd.__init__(self)
         self.prompt = '> '
         self.my_view = in_view
         self.my_interpreter = in_interpreter
+
+
+    @staticmethod
+    def check_set_file_path(running_args):
+        if len(running_args) > 2 :
+            print("too many arguments supplied")
+            return running_args[0]
+        try:
+            open(running_args[1], 'r')
+            return running_args[1]
+        except OSError as erro:
+            print(erro)
+            print("Defaulting to working directory.")
+            return running_args[0]
+        except IndexError as erro:
+            print("No default path provided.")
+            print("Defaulting to working directory.")
+            return running_args[0]
 
     def do_add(self, *args):
         options_arr = self.parse_args(args)
@@ -22,9 +39,9 @@ class InterpreterController(Cmd):
     def do_save(self, *args):
         options_arr = self.parse_args(args)
         option_dict = {
-            '-s': self.my_interpreter.save_file,
+            '-f': self.my_interpreter.save_file,
             '-d': self.my_interpreter.save_database,
-            '-f': self.my_interpreter.serialize_data_arr
+            '-s': self.my_interpreter.serialize_data_arr
         }
         self.find_in_dict(options_arr, option_dict)
 
