@@ -7,6 +7,8 @@ class Interpreter:
         self.database_handler = in_database_handler
         self.default_file_path = in_file_path
 
+    def get_data(self):
+        return self.data_arr;
 
     def serialize_data_arr(self):
         # TODO Implement this method

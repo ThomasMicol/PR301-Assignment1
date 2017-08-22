@@ -50,7 +50,7 @@ class InterpreterController(Cmd):
         option_dict = {
             '-a': self.my_view.sales_by_gender_graph(self.my_interpreter.get_data()),
             '-b': self.my_view.employees_by_gender_graph(self.my_interpreter.get_data()),
-            '-c': self.my_view.ages_verse_salary_graph(self.my_interpreter.get_data()),
+            '-c': self.my_view.age_verse_salary_graph(self.my_interpreter.get_data()),
             '-d': self.my_view.bmi_pie_graph(self.my_interpreter.get_data())
         }
         self.find_in_dict(options_arr, option_dict)
@@ -71,20 +71,17 @@ class InterpreterController(Cmd):
     def manual_add(self):
         self.my_interpreter.add_manual_data(self.my_view.manual_person_flow())
 
-    def load_file(self):
-        pass
-
     def find_in_dict(self, options_arr, options_dict):
         arg_found = False
         for key, value in options_dict.items():
             if options_arr[0] == key:
                 arg_found = True
                 if not self.try_launch(key, value, options_arr):
-                    self.my_view.show("command FAILED")
+                    return
                 else:
-                    self.my_view.show("SUCCESS")
+                    return
         if not arg_found:
-            self.my_view.show("That option doesnt work with the given command")
+            return
 
     def try_launch(self, key, value, options_arr):
         if (key == '-m'):
@@ -95,5 +92,4 @@ class InterpreterController(Cmd):
                 value(options_arr[1])
                 return True
             else:
-                self.my_view.show("Incorrect amount of arguments")
                 return False
