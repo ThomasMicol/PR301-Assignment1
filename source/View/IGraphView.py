@@ -11,9 +11,6 @@ class IGraphView(object):
     def bmi_pie_graph(self, data_arr):
         raise NotImplementedError("An abstract method has not been overriden")
 
-    def simple_print(self, data_arr):
-        raise NotImplementedError("An abstract method has not been overriden")
-
     def manual_person_flow(self):
         raise NotImplementedError("An abstract method has not been overriden")
 

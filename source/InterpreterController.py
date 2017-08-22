@@ -48,12 +48,14 @@ class InterpreterController(Cmd):
     def do_show(self, *args):
         options_arr = self.parse_args(args)
         option_dict = {
-            '-a': self.my_view.sales_by_gender_graph(self.my_interpreter.get_data()),
-            '-b': self.my_view.employees_by_gender_graph(self.my_interpreter.get_data()),
-            '-c': self.my_view.age_verse_salary_graph(self.my_interpreter.get_data()),
-            '-d': self.my_view.bmi_pie_graph(self.my_interpreter.get_data())
+            '-a': self.my_view.sales_by_gender_graph,
+            '-b': self.my_view.employees_by_gender_graph,
+            '-c': self.my_view.age_verse_salary_graph,
+            '-d': self.my_view.bmi_pie_graph
         }
-        self.find_in_dict(options_arr, option_dict)
+        for key, value in option_dict.items():
+            if options_arr[0] == key:
+                value(self.my_interpreter.get_data())
 
     def do_quit(self, *args):
         quit()
@@ -93,3 +95,4 @@ class InterpreterController(Cmd):
                 return True
             else:
                 return False
+
