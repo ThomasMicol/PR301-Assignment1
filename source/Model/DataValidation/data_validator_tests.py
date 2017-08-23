@@ -1,9 +1,9 @@
 import unittest
-from DataValidator import *
+from data_validator import *
 
 
 class DataValidatorTests(unittest.TestCase):
-    """DataValidatorTests structure first three testcases done by Steven Snelling"""
+    # DataValidatorTests structure first three testcases done by Steven Snelling
     @classmethod
     def setUpClass(cls):
         cls.dataValidator = DataValidator()
@@ -11,13 +11,17 @@ class DataValidatorTests(unittest.TestCase):
     def setUp(self):
         # be executed before each test
         print("set up")
-        self.data = [['A001', 'F', '23', '456', 'Normal', '23', '30-5-1994'],
+        self.data = [['A001', 'F', '23', '456', 'Normal', '23', '30-05-1994'],
                      ['C234', 'M', '5', '676', 'Overweight', '300', '1-12-1977'],
-                     ['C4', 'Male', 'nine', '66,8', 'heavy', '3,00', '1-12-19']]
+                     ['C4', 'Male', 'nine', '66,8', 'heavy', '3,00', '1-12-19'],
+                     ['', '', '', '', '', '', '']]
 
     def tearDown(self):
         # be executed after each test case
         print("teardown")
+
+    def test_data_validator_01(self):
+        self.assertEqual(self.dataValidator.validate_data(self.data[0]),['A001', 'F', '23', '456', 'Normal', '23', '30-05-1994'], "That is not a valid array")
 
     def test_person_age_01(self):
         # good day test for person 1
@@ -27,7 +31,7 @@ class DataValidatorTests(unittest.TestCase):
     def test_person_age_02(self):
         # good day test for person 2
         age = self.data[1][2]
-        self.assertTrue(self.dataValidator.validate_age(age), "That is a valid age input")
+        self.assertFalse(self.dataValidator.validate_age(age), "That is not a valid age input")
 
     def test_person_age_03(self):
         # bad day test for person 3 bad data is rejected
