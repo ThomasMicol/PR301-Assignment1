@@ -136,7 +136,7 @@ class InterpreterController(Cmd):
                 value(self.my_interpreter.get_data())
 
     @staticmethod
-    def do_quit(*args):
+    def do_quit(arg):
         # Steven
         """
         Closes the program
@@ -161,6 +161,7 @@ class InterpreterController(Cmd):
         #
         #
         try:
+            arg_arr = None
             for arg in arg_str:
                 arg_arr = arg.split(' ')
             if len(arg_arr) > 2:

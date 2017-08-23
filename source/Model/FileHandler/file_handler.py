@@ -46,14 +46,14 @@ class FileHandler(IFileHandler):
                 write = csv.writer(data_file, quotechar='|', delimiter=",",
                                    quoting=csv.QUOTE_MINIMAL)
                 for person in data_arr:
-                    try:
                         write.writerow(person)
-                    except:
-                        return False
-                return True
         except FileNotFoundError:
             print("File ", file_path, " was not found")
             return False
+        except Exception as err:
+            print(err)
+            return False
+        return True
 
     def shelve_file(self, file_path):
         # TODO This method needs to be implemeted
