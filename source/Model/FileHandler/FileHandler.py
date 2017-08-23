@@ -1,4 +1,4 @@
-from source.Model.FileHandler.IFileHandler import IFileHandler
+from Model.FileHandler.IFileHandler import IFileHandler
 import csv
 
 
