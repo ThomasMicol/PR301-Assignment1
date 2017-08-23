@@ -1,11 +1,11 @@
 from Model.DataValidation.IDataValidator import IDataValidator
-# from IDataValidator import IDataValidator
+#from IDataValidator import IDataValidator
 import re
 import doctest
 
 
 class DataValidator(IDataValidator):
-    """DataValidator written by Steven Snelling"""
+    # DataValidator written by Steven Snelling
     def validate_data(self, dirty_data_arr):
         # where valid person data goes
         clean_people = []
@@ -65,10 +65,10 @@ class DataValidator(IDataValidator):
         """
         Checks EMPID = [A-Z][0-9]{3}) e.g. B003
 
-        >>> validate_empid("C002")
+        >>> DataValidator.validate_empid("C002")
         True
         """
-        if re.compile("([A-Z][0-9]{3})").match(empid):
+        if re.compile("^[A-Z][0-9]{3}$").match(empid):
             return True
         else:
             return False
@@ -78,10 +78,10 @@ class DataValidator(IDataValidator):
         """
         Checks gender = M or F e.g. M or F
 
-        >>> validate_gender("F")
+        >>> DataValidator.validate_gender("F")
         True
         """
-        if re.compile("([M|F])").match(gender):
+        if re.compile("^[M|F]$").match(gender):
             return True
         else:
             return False
@@ -91,10 +91,10 @@ class DataValidator(IDataValidator):
         """
         Checks age = [0-9]{2} e.g. 0 to 99
 
-        >>> validate_age(str(64))
+        >>> DataValidator.validate_age(str(64))
         True
         """
-        if re.compile("([0-9]{1,2})").match(age):
+        if re.compile("^[0-9]{2}$").match(age):
             return True
         else:
             return False
@@ -104,10 +104,10 @@ class DataValidator(IDataValidator):
         """
         Checks Sales = [0-9]{3} e.g. 330
 
-        >>> validate_sales(str(999))
+        >>> DataValidator.validate_sales(str(999))
         True
         """
-        if re.compile("([0-9]{3})").match(sales):
+        if re.compile("^[0-9]{3}$").match(sales):
             return True
         else:
             return False
@@ -117,10 +117,10 @@ class DataValidator(IDataValidator):
         """
         Checks BMI = normal|overweight|obesity|underweight case insensitive
 
-        >>> validate_bmi("Overweight")
+        >>> DataValidator.validate_bmi("Overweight")
         True
         """
-        if re.compile("normal|overweight|obesity|underweight", re.I).match(bmi):
+        if re.compile("^Normal|Overweight|Obesity|Underweight$").match(bmi):
             return True
         else:
             return False
@@ -130,10 +130,10 @@ class DataValidator(IDataValidator):
         """
         Checks Salary = [0-9]{2,3} e.g. 33 or 330
 
-        >>> validate_salary(str(24))
+        >>> DataValidator.validate_salary(str(24))
         True
         """
-        if re.compile("([0-9]{2,3})").match(salary):
+        if re.compile("^[0-9]{2,3}$").match(salary):
             return True
         else:
             return False
@@ -143,13 +143,15 @@ class DataValidator(IDataValidator):
         """
         Checks birthday = [0-9]{1,2}-[0-9]{1,2}-[0-9]{4} e.g. 2-5-1967
 
-        >>> validate_birthday("2-6-2014")
+        >>> DataValidator.validate_birthday("2-6-2014")
         True
         """
-        if re.compile("([0-9]{1,2}-[0-9]{1,2}-[0-9]{4})").match(birthday):
+        if re.compile("^([0-9]{1,2})-([0-9]{1,2})-([0-9]{4})$").match(birthday):
+            # TODO make it smarter to get the month a days in the correct order
             return True
+
         else:
             return False
 
 
-# doctest.testmod(verbose=True)
+#doctest.testmod(verbose=True)
