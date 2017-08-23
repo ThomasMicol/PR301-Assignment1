@@ -136,6 +136,10 @@ class InterpreterController(Cmd):
                 value(self.my_interpreter.get_data())
 
     def do_quit(self, *args):
+        # Steven
+        """
+        Closes the program
+        """
         # Written By Thomas
         #
         # If quit is typed into the cmd. it quits.
