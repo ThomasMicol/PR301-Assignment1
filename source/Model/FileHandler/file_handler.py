@@ -1,4 +1,4 @@
-from Model.FileHandler.IFileHandler import IFileHandler
+from Model.FileHandler.i_file_handler import IFileHandler
 import csv
 
 
@@ -28,7 +28,7 @@ class FileHandler(IFileHandler):
         except FileNotFoundError:
             print("File ", file_path, " was not found")
             return False
-        except OSError as err:
+        except OSError:
             print("file path cant be int")
             return False
         return data_arr

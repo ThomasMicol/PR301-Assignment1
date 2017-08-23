@@ -1,4 +1,4 @@
-from Model.Database.IDatabase import IDatabase
+from Model.Database.i_database import IDatabase
 import sqlite3
 
 
@@ -83,11 +83,12 @@ class Database(IDatabase):
                                                           bmi=person[4],
                                                           salary=person[5],
                                                           birthday=person[6])
+                    self.cursor.execute(insert_command)
+                    self.conn.commit()
                 except IndexError as err:
                     print(err)
                     return False
-            self.cursor.execute(insert_command)
-            self.conn.commit()
+
         except AttributeError as err:
             print(err)
             return False
@@ -157,7 +158,7 @@ class Database(IDatabase):
         self.create_connection(database_name)
         return self.format_incoming_db_info(self.select_person_data())
 
-    def save_data(self, data_arr=[], database_name='mydb'):
+    def save_data(self, data_arr, database_name='mydb'):
         # Written By Thomas
         #
         # This creates a database connection from the given name then

@@ -49,7 +49,7 @@ class InterpreterController(Cmd):
             print(erro)
             print("Defaulting to working directory.")
             return running_args[0]
-        except IndexError as erro:
+        except IndexError:
             print("No default path provided.")
             print("Defaulting to working directory.")
             return running_args[0]
@@ -135,7 +135,8 @@ class InterpreterController(Cmd):
             if options_arr[0] == key:
                 value(self.my_interpreter.get_data())
 
-    def do_quit(self, *args):
+    @staticmethod
+    def do_quit(*args):
         # Steven
         """
         Closes the program
@@ -159,12 +160,15 @@ class InterpreterController(Cmd):
         # The resulting array is then returned to the calling function.
         #
         #
-        for arg in arg_str:
-            arg_arr = arg.split(' ')
-        if len(arg_arr) > 2:
-            return "Too many arguments were given"
-        else:
-            return arg_arr
+        try:
+            for arg in arg_str:
+                arg_arr = arg.split(' ')
+            if len(arg_arr) > 2:
+                return "Too many arguments were given"
+            else:
+                return arg_arr
+        except IndexError:
+            return False
 
     def manual_add(self):
         # Written By Thomas
@@ -191,7 +195,6 @@ class InterpreterController(Cmd):
         arg_found = False
         for key, value in options_dict.items():
             if options_arr[0] == key:
-                arg_found = True
                 if not self.try_launch(key, value, options_arr):
                     return
                 else:

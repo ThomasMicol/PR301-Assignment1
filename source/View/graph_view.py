@@ -1,4 +1,4 @@
-from View.IGraphView import IGraphView
+from View.i_graph_view import IGraphView
 from plotly import *
 import plotly.graph_objs as ob
 
@@ -137,7 +137,8 @@ class GraphView(IGraphView):
         # Outputs a given string.
         print(show_string)
 
-    def read(self, prompt):
+    @staticmethod
+    def read(prompt):
         # Written By Thomas
         #
         # Reads and input while also giving the user a prompt
@@ -152,14 +153,10 @@ class GraphView(IGraphView):
         # all the information of an employee from the user.
         #
         person_data_arr = []
-        person_data = []
-        person_data.append(self.read("Enter your employee ID: "))
-        person_data.append(self.read("Enter your gender: "))
-        person_data.append(self.read("Enter your age: "))
-        person_data.append(self.read("Enter your sales count: "))
-        person_data.append(self.read("Enter your BMI: "))
-        person_data.append(self.read("Enter your salary: "))
-        person_data.append(self.read("Enter your birthday, e.g. dd-mm-yyyy: "))
+        person_data = [self.read("Enter your employee ID: "), self.read("Enter your gender: "),
+                       self.read("Enter your age: "), self.read("Enter your sales count: "),
+                       self.read("Enter your BMI: "), self.read("Enter your salary: "),
+                       self.read("Enter your birthday, e.g. dd-mm-yyyy: ")]
         person_data_arr.append(person_data)
         return person_data_arr
 
