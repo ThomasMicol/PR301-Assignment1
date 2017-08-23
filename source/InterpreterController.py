@@ -55,6 +55,15 @@ class InterpreterController(Cmd):
             return running_args[0]
 
     def do_add(self, *args):
+        # Vaishali
+        """
+        ***
+        OPTIONS
+            -l : This loads the information from a file. The file is given to the command as a string.
+            -m : This is for manual data entry. The user will be prompted for the information in steps after entering this option.
+            -d : This loads the information into the system from a database.
+        ***
+        """
         # Written By Thomas
         #
         # This is the add command in the cmd. The dictionary maps
@@ -72,6 +81,15 @@ class InterpreterController(Cmd):
         self.find_in_dict(options_arr, option_dict)
 
     def do_save(self, *args):
+        #Vaishali
+        """
+        ***
+        OPTIONS
+                        -s : This is a standard save. The information is saved to a file in the saves folder in the program files. (object is serialized)
+                        -d : This saves the current information to the database.
+                        -f : This saves a file to the specified file location.
+        ***
+        """
         # Written by Thomas
         #
         # This creates a dictionary mapping the options to the respective
@@ -88,6 +106,17 @@ class InterpreterController(Cmd):
         self.find_in_dict(options_arr, option_dict)
 
     def do_show(self, *args):
+        # Vaishali
+        """
+        ***
+        OPTIONS
+                    -a : Shows a bar graph of the total sales made by males verse the total sales made by female.
+                    -b : Shows a pie chart of the percentage of female workers verse male workers
+                    -c : Shows a scatter plot graph of peoples age verse their salary.
+                    -d : Shows a pie chart of the BMI of a set of people.
+        ***
+        """
+
         # Written by Thomas
         #
         # This creates a dictionary mapping the options to the respective
