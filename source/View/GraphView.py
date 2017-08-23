@@ -21,8 +21,6 @@ class GraphView(IGraphView):
             gender_data.append(person[1])
             sales = int(person[3])
             sales_data.append(sales)
-            print(sales_data)
-            print(gender_data)
         graph_data = [ob.Bar(
             x=gender_data,
             y=sales_data
