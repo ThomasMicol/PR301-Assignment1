@@ -3,7 +3,7 @@ from data_validator import *
 
 
 class DataValidatorTests(unittest.TestCase):
-    # DataValidatorTests structure first three testcases done by Steven Snelling
+    # DataValidatorTests structure first 7 test cases done by Steven Snelling
     @classmethod
     def setUpClass(cls):
         cls.dataValidator = DataValidator()
@@ -13,15 +13,39 @@ class DataValidatorTests(unittest.TestCase):
         print("set up")
         self.data = [['A001', 'F', '23', '456', 'Normal', '23', '30-05-1994'],
                      ['C234', 'M', '5', '676', 'Overweight', '300', '1-12-1977'],
-                     ['C4', 'Male', 'nine', '66,8', 'heavy', '3,00', '1-12-19'],
-                     ['', '', '', '', '', '', '']]
+                     ['C4', 'Male', 'nine', '66,8', 'heavy', '3,00', '1-12-19']]
+
+        self.data_2 = [['H001', 'M', '16', '200', 'Normal', '230', '30-05-1999']]
+
+        self.data_3 = [['', '', '', '', '', '', '']]
+
+        self.data_4 = [['H001', 'Male', 'eight', '2oo', 'Normal', '230', '30-05-1999']]
+
+        self.data_5 = [['@001', '~', '!', '&&&', '^', '$', '*-05-*']]
 
     def tearDown(self):
         # be executed after each test case
         print("teardown")
 
     def test_data_validator_01(self):
-        self.assertEqual(self.dataValidator.validate_data(self.data[0]),['A001', 'F', '23', '456', 'Normal', '23', '30-05-1994'], "That is not a valid array")
+        # good day for testing validator
+        result = [['H001', 'M', '16', '200', 'Normal', '230', '30-05-1999']]
+        self.assertEqual(self.dataValidator.validate_data(self.data_2), result, "That is not a valid data array")
+
+    def test_data_validator_02(self):
+        # bad day for testing validator no data
+        result = []
+        self.assertEqual(self.dataValidator.validate_data(self.data_3), result, "That is not a valid data array")
+
+    def test_data_validator_03(self):
+        # bad day for testing validator some data
+        result = []
+        self.assertEqual(self.dataValidator.validate_data(self.data_4), result, "That is not a valid data array")
+
+    def test_data_validator_04(self):
+        # bad day for testing validator can it handle special characters
+        result = []
+        self.assertEqual(self.dataValidator.validate_data(self.data_5), result, "That is not a valid data array")
 
     def test_person_age_01(self):
         # good day test for person 1
@@ -38,6 +62,8 @@ class DataValidatorTests(unittest.TestCase):
         age = self.data[2][2]
         self.assertFalse(self.dataValidator.validate_age(age), "That is not a valid age input")
 
+    #
+    #
     # vaishali
     # Testing valid employeeID input
     def test_person_empid_01(self):

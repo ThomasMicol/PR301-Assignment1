@@ -46,7 +46,7 @@ class DataValidator(IDataValidator):
                         print("Valid birthday: " + str(dirty_person[6]))
                         cleaned_person.append(str(dirty_person[6]))
                 else:
-                    return "Not enough feilds" + str(len(dirty_person))
+                    return "Not enough feilds: " + str(len(dirty_person))
 
                 # print("Cleaned data before filter: ", cleaned_person)
 
@@ -59,7 +59,7 @@ class DataValidator(IDataValidator):
 
         except TypeError:
             print(TypeError)
-            print("You have submited the wrong data type")
+            print("You have submitted the wrong data type")
 
         print("Cleaned people after filter: ", clean_people)
 
@@ -159,4 +159,4 @@ class DataValidator(IDataValidator):
             return False
 
 
-#doctest.testmod(verbose=True)
+# doctest.testmod(verbose=True)
