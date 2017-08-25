@@ -1,5 +1,6 @@
 from Model.FileHandler.i_file_handler import IFileHandler
 import csv
+import shelve
 
 
 class FileHandler(IFileHandler):
@@ -55,6 +56,17 @@ class FileHandler(IFileHandler):
             return False
         return True
 
-    def shelve_file(self, file_path):
-        # TODO This method needs to be implemeted
-        pass
+    @staticmethod
+    def shelve_file(data_arr, file_path='data.shelf'):
+        # written by Steven
+        try:
+            count = 0
+            d = shelve.open(file_path, 'c')
+            for person in data_arr:
+                count = count + 1
+                d[str(count)] = person
+            d.close()
+        except FileNotFoundError:
+            print("File ", file_path, " was not found")
+            return False
+        return True

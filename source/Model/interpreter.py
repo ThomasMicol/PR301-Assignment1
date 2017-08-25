@@ -33,9 +33,21 @@ class Interpreter:
         #
         return self.data_arr
 
-    def serialize_data_arr(self):
-        # TODO Implement this method
-        pass
+    def serialize_data_arr(self, args=''):
+        # Written by Steven - Based off of Thomas work
+        if args == '':
+            try:
+                self.file_handler.shelve_file(self.data_arr, self.default_file_path)
+            except OSError:
+                print(OSError)
+                return False
+        else:
+
+            try:
+                self.file_handler.shelve_file(self.data_arr, args)
+            except OSError:
+                print(OSError)
+                return False
 
     def save_file(self, args=''):
         # Written By Thomas
