@@ -18,6 +18,9 @@ class Test:
     def multiply_by_2(self):
         return self._number*2
 
+
+class DataValidator(IDataValidator):
+
     # Check valid empid
     def validate_empid(empid):
         """
