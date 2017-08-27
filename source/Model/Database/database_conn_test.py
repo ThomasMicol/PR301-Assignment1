@@ -1,8 +1,9 @@
 #!usr/bin/python
 from Model.DatabaseConn.database import database
 # from Model.DatabaseConn.database import database
-                # By Vaishali
+# By Vaishali
 import sqlite3
+
 
 class database():
 
@@ -15,38 +16,47 @@ class database():
             self.conn = sqlite3.connect(database_name)
         except ConnectionError:
             print (ConnectionError)
-        self.cursor = self.conn.cursor()    # prepare a cursor object using cursor() method
-        self.make_tables()
+            # prepare a cursor object using cursor() method
+            self.cursor = self.conn.cursor()
+            self.make_tables()
 
     # Drop table if it already exist using execute() method.
     # self.cursor.execute("Drop table employee if exists!")
 
     # Create table name "employee" as per requirement
     def make_tables(self):
-        make_table="""CREATE TABLE IF NOT EXISTS employee (EMPID INTERGER PRIMARY KEY, Gender CHAR, sales INTERGER
-        , bmi VARCHAR(15), salary INTERGER, birthday DATE);"""
+        make_table = """CREATE TABLE IF NOT EXISTS employee (
+            EMPID INTERGER PRIMARY KEY, Gender CHAR, sales INTERGER
+            , bmi VARCHAR(15), salary INTERGER, birthday DATE);"""
         try:
             # Execute the SQL Command
-            self.cursor.execute(make_table);
+            self.cursor.execute(make_table)
             self.conn.commit()  # Commit the changes in database
             # Commit is the operation, which gives a green signal
-            # to database to finalize the changes, and after this operation, no change can be reverted back.
+            # to database to finalize the changes, and after this operation,
+            # no change can be reverted back.
         except:
             # Rollback in case there is any error
             # If you are not satisfied with one or more of the changes
-            # and you want to revert back those changes completely, then use rollback() method.
+            # and you want to revert back those changes completely,
+            # then use rollback() method.
             self.conn.rollback()
 
     # insert into employee table by defining emplayee_arrey
     def insert_employee(self):
         for employee in data_arr:
-            insert_string = """INSERT INTO employees (empid ,Gender , sales, bmi, salary, birthday)
-                         VALUES (NULL, "{gender}", "{sales}", "{bmi}", "{salary}", "{birthday}");"""
-            insert_command = insert_string.format(gender=employee[1], sales=employee[3], bmi=employee[4],
-                                                  salary=employee[5], birthday=employee[6])
+            insert_string =
+            """INSERT INTO employees (empid, Gender, sales, bmi, salary, birthday)VALUES
+                (NULL, "{gender}", "{sales}", "{bmi}", "{salary}", "{birthday}
+                "); """
+            insert_command = insert_string.format(gender=employee[1],
+                                                  sales=employee[3],
+                                                  bmi=employee[4],
+                                                  salary=employee[5],
+                                                  birthday=employee[6])
         try:
             # Execute the SQL Command
-            self.cursor.execute(insert_string);
+            self.cursor.execute(insert_string)
             self.conn.commit()  # Commit the changes in database
         except:
             # Rollback in case there is any error
