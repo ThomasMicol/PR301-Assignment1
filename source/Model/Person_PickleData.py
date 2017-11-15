@@ -31,8 +31,13 @@ with open('Person_data.pkl', 'rb') as input:
     print(Person1.birthday)
 
     Person2 = pickle.load(input)
+<<<<<<< HEAD
     print(Person2.emp_id)  # -> A001
     print(Person2.gender)  # -> F
+=======
+    print(Person2.emp_id)  # -> A002
+    print(Person2.gender)  # -> M
+>>>>>>> c5e05dcb91ac2507d0ade2937a8a4004470529bc
     print(Person2.age)
     print(Person2.sales)
     print(Person2.bmi)
