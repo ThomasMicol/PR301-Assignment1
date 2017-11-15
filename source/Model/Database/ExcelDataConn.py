@@ -3,20 +3,23 @@ import xlsxwriter
 
 
 class Database(IDatabase):
-# Written By Vaishali
+    # Written By Vaishali
     def __init__(self):
-    #Initialize the row and col Varible so that I can reassign them when require
+        # Initialize the row and col Varible so
+        # that I can reassign them when require
         self.row = 0
         self.col = 0
 
     # Written By Vaishali
     #
     # Create a new workbook object using the workbook() constructor
-    # Workbook()takes one, non-optional argument which is the filename that we want to create
+    # Workbook()takes one, non-optional argument
+    # which is the filename that we want to create
     #
     # xlswriter can only make new file. It can't read or modify existing file
     #
-    # By Default, worksheet name is bydefault i.e. workshhet1, worksheet2 etc. But we can also specify a name
+    # By Default, worksheet name is bydefault i.e. workshhet1,
+    # worksheet2 etc. But we can also specify a name
     # worksheet1 = workbook.add.worksheet(personData)
     #
     # Somedata we want to write to the worksheet1
@@ -60,7 +63,7 @@ for EMPID, Gender, Age, Sales, BMI, Salary, Birthday in (Employee):
     worksheet.write(row, col + 1, Sales)
     worksheet.write(row, col + 1, BMI)
     worksheet.write(row, col + 1, Salary)
-    worksheet.write(row, col + 1, Birthday, date_format )
+    worksheet.write(row, col + 1, Birthday, date_format)
     row += 1
 
 workbook.close()

@@ -146,8 +146,12 @@ class DataValidatorTests(unittest.TestCase):
 =======
     #
     #
+<<<<<<< HEAD
 >>>>>>> a3ae23fb97561e0dfde2a73d222ba3834ae62c21:source/Model/DataValidation/data_validator_tests.py
     # vaishali
+=======
+    #  By Vaishali
+>>>>>>> origin/master
     # Testing valid employeeID input
     def test_person_empid_01(self):
         empid = self.data[0][0]
