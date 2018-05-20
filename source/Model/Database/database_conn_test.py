@@ -1,5 +1,5 @@
 #!usr/bin/python
-from Model.DatabaseConn.database import database
+from Database_conn.database import Database
 # from Model.DatabaseConn.database import database
 # By Vaishali
 import sqlite3

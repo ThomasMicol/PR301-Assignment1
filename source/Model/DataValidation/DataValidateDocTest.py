@@ -1,25 +1,14 @@
-# By Vaishali
-# DocTest
-from Model.DataValidation.data_validator import IDataValidator
+from src.data_validator import *
 import re
 import doctest
-doctest.testfile("Model/DataValidation/employee.txt")
+doctest.testfile("src/data_validator/staffinfo.csv")
 
 
-class Test:
-    """
-    >>> a=Test(5)
-    >>> a.multiply_by_2()
-    10
-    """
-    def __init__(self, number):
-        self._number = number
+#
+# Author: Vaishali Patel
+# DocTest
 
-    def multiply_by_2(self):
-        return self._number*2
-
-
-class DataValidator(IDataValidator):
+class DataValidator(DataValidator):
 
     # Check valid empid
     def validate_empid(empid):

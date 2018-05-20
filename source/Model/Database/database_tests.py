@@ -3,7 +3,7 @@ from .database import *
 
 
 class DatabaseTests(unittest.TestCase):
-    """Written By Thomas
+    """Written By Vaishali
 
         This file provides test coverage for the database
 
@@ -28,27 +28,6 @@ class DatabaseTests(unittest.TestCase):
         # Grabs the information from an existing database
         self.assertTrue(self.database_handler.get_person_information("../mydb"), "[['A001', 'F', 23"
                                                                                  ", 456, 'Normal',"
-                                                                                 " 23, '30-5-1994'],"
-                                                                                 " ['C234', 'M', 40, "
-                                                                                 "676, 'Overweight', "
-                                                                                 "300, '1-12-1977'], "
-                                                                                 "['A001', 'F', 23, 456,"
-                                                                                 " 'Normal', 14, '30-5-1994'],"
-                                                                                 " ['C342', 'Male', 40, 676, "
-                                                                                 "'Overweight', 300, '1-12-1977']"
-                                                                                 ", ['D123', 'F', 55, 123, "
-                                                                                 "'Obesity', 32, '15-01-1997'],"
-                                                                                 " ['A001', 'F', 23, 456, 'Normal'"
-                                                                                 ", 23, '30-5-1994'], ['C234',"
-                                                                                 " 'M', 40, 676, 'Overweight', "
-                                                                                 "300, '1-12-1977'], ['A001',"
-                                                                                 " 'F', 23, 456, 'Normal', 14,"
-                                                                                 " '30-5-1994'], ['C342', 'Male',"
-                                                                                 " 40, 676, 'Overweight', 300, "
-                                                                                 "'1-12-1977'], ['D123', 'F', "
-                                                                                 "55, 123, 'Obesity', 32, "
-                                                                                 "'15-01-1997']]")
-
     def test_04(self):
         # Try find a database that has the value 42
         # Should fail
